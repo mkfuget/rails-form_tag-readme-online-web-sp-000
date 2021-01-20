@@ -58,4 +58,17 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  describe 'new post' do
+    it 'ensures that the form route works with the /new action' do
+      visit new_post_path
+      expect(page.status_code).to eq(200)
+    end
+  end
+
+  it 'renders HTML in the /new template' do
+    visit new_post_path
+    expect(page).to have_content('Post Form')
+  end
+
 end
